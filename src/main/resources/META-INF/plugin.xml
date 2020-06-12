@@ -1,0 +1,29 @@
+<idea-plugin>
+    <id>org.example.kplug</id>
+    <name>KPlug</name>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description>generates kotlin documentation for functions</description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.java</depends>
+    <depends>org.jetbrains.kotlin</depends>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <enterHandlerDelegate implementation="actions.EnterKDOCHandler" order="first" />
+    </extensions>
+
+    <actions>
+        <group id="MyPlugin.TopMenu"
+               text="CheckKPlugVersion"
+               description="KPlug plugin version check">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="KPlugVersion"
+                    class="actions.CheckVersionToolbarAction"
+                    text="_Check Version"
+                    description="KPlug"/>
+        </group>
+    </actions>
+</idea-plugin>
