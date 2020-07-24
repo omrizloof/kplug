@@ -9,8 +9,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 class ActionHandler : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent) {
-        val noti = NotificationGroup("myplugin", NotificationDisplayType.BALLOON, true)
-        noti.createNotification("My Title",
+        val notification = NotificationGroup("myplugin", NotificationDisplayType.BALLOON, true)
+        notification.createNotification("My Title",
             "My Message",
             NotificationType.INFORMATION,
             null

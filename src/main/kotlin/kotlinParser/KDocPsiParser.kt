@@ -4,12 +4,13 @@ import com.intellij.openapi.editor.*
 import com.intellij.psi.*
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.util.text.*
+import org.jetbrains.kotlin.idea.refactoring.changeSignature.getDeclarationBody
 import org.jetbrains.kotlin.kdoc.psi.api.KDoc
 import org.jetbrains.kotlin.psi.KtNamedFunction
 import org.jetbrains.kotlin.psi.KtTypeArgumentList
 
 
-class PsiParser(private val mFile: PsiFile, private val mDocument: Document, private  val mCaretOffset: Int) : IPsiParser {
+class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document, private  val mCaretOffset: Int) : IPsiParser {
 
     companion object {
         private const val KDOC_OPEN_MAX_MARGIN = 4
@@ -30,18 +31,25 @@ class PsiParser(private val mFile: PsiFile, private val mDocument: Document, pri
         return fullArgumentsList
     }
 
-    override fun shouldGenerateKDOC(): Boolean {
+    private fun parseExceptionsList(ktNamedFunction: KtNamedFunction): ArrayList<String> {
+        val throwAnnotation = ktNamedFunction.annotations.forEach {
+            var x = 0
+            x++
+        }
+        val exceptionsList = ArrayList<String>()
+//        exceptionsList.addAll(ktNamedFunction.)
+        return exceptionsList
+    }
+
+    override fun parse(): Boolean {
         val project = mFile.project
         // parent.parent will hold the function declaration or class declaration.
         val caretElement = mFile.findElementAt(mCaretOffset) ?: return false
         val firstParent = caretElement.parent ?: return false
         val secondParent = firstParent.parent ?: return false
-        if (secondParent !is KtNamedFunction) {
-            return false
-        }
-        val functionDeclaration = secondParent as KtNamedFunction
-
-
+        val functionDeclaration = secondParent as? KtNamedFunction ?: return false
+        val parameters = parseParameterList(functionDeclaration)
+        val exceptions = parseExceptionsList(functionDeclaration)
         val docChars = mDocument.charsSequence
         val offset = mCaretOffset
         val lastKDOCValidOpen = CharArrayUtil.lastIndexOf(docChars, DocumentationConstants.KDOC_OPEN_TOKEN, offset)
