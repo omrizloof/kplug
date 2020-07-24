@@ -1,0 +1,4 @@
+package kotlinParser
+
+class ParseResult {
+}
