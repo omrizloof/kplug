@@ -1,19 +1,25 @@
 package kotlinParser
 
+import com.android.tools.idea.gradle.structure.model.meta.annotated
 import com.intellij.openapi.editor.*
 import com.intellij.psi.*
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.util.text.*
+import org.apache.commons.lang.StringUtils
 import org.jetbrains.kotlin.idea.refactoring.changeSignature.getDeclarationBody
 import org.jetbrains.kotlin.kdoc.psi.api.KDoc
 import org.jetbrains.kotlin.psi.KtNamedFunction
 import org.jetbrains.kotlin.psi.KtTypeArgumentList
+import org.jetbrains.kotlin.util.isAnnotated
 
 
 class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document, private  val mCaretOffset: Int) : IPsiParser {
 
     companion object {
         private const val KDOC_OPEN_MAX_MARGIN = 4
+        private const val ANNOTATION_THROWS_DECLARATION = "Throws"
+        private const val PARENTHESIS_CLOSE = ")"
+        private const val PARENTHESIS_OPEN = "("
     }
 
     /**
@@ -31,13 +37,23 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
         return fullArgumentsList
     }
 
+    /**
+     * extracts the declared thrown exceptions from a kotlin named function
+     *
+     * @param ktNamedFunction: the kotlin function whose exceptions need to be parsed.
+     * @return a list of the function exceptions by type.
+     */
     private fun parseExceptionsList(ktNamedFunction: KtNamedFunction): ArrayList<String> {
-        val throwAnnotation = ktNamedFunction.annotations.forEach {
-            var x = 0
-            x++
-        }
         val exceptionsList = ArrayList<String>()
-//        exceptionsList.addAll(ktNamedFunction.)
+        ktNamedFunction.annotationEntries
+                .filter { it.shortName.toString() == ANNOTATION_THROWS_DECLARATION }
+                .forEach {
+                    StringUtils.substringBetween(it.text, PARENTHESIS_OPEN, PARENTHESIS_CLOSE)
+                            .split(",")
+                            .forEach { exception ->
+                        exceptionsList.add(exception.substringBefore(":"))
+                    }
+                }
         return exceptionsList
     }
 
