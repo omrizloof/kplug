@@ -12,10 +12,12 @@ import org.jetbrains.kotlin.psi.KtNamedFunction
 class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document, private  val mCaretOffset: Int) : IPsiParser {
 
     companion object {
-        private const val KDOC_OPEN_MAX_MARGIN = 4
+        private const val NO_VALID_KDOC_OPEN = -1
         private const val ANNOTATION_THROWS_DECLARATION = "Throws"
         private const val PARENTHESIS_CLOSE = ")"
         private const val PARENTHESIS_OPEN = "("
+        private const val EXCEPTION_LIST_SEPARATOR = ","
+        private const val EXCEPTION_TYPE_POSTFIX_DELIMITER = ":"
     }
 
     /**
@@ -45,9 +47,9 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
                 .filter { it.shortName.toString() == ANNOTATION_THROWS_DECLARATION }
                 .forEach {
                     StringUtils.substringBetween(it.text, PARENTHESIS_OPEN, PARENTHESIS_CLOSE)
-                            .split(",")
+                            .split(EXCEPTION_LIST_SEPARATOR)
                             .forEach { exception ->
-                        exceptionsList.add(exception.substringBefore(":"))
+                        exceptionsList.add(exception.substringBefore(EXCEPTION_TYPE_POSTFIX_DELIMITER))
                     }
                 }
         return exceptionsList
@@ -58,13 +60,13 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
             return false
         }
         val docChars = mDocument.charsSequence
-        val offset = mCaretOffset
-        val lastKDOCValidOpen = CharArrayUtil.lastIndexOf(docChars, DocumentationConstants.KDOC_OPEN_TOKEN, offset)
-        if (lastKDOCValidOpen == -1) {
+        val caretLocation = mCaretOffset
+        val lastKDOCValidOpen = CharArrayUtil.lastIndexOf(docChars, DocumentationConstants.KDOC_OPEN_TOKEN, caretLocation)
+        if (lastKDOCValidOpen == NO_VALID_KDOC_OPEN) {
             // could not find /** for a KDOC. should not generate.
             return false
         }
-        if (CharArrayUtil.indexOf(docChars, DocumentationConstants.KDOC_CLOSE_TOKEN, lastKDOCValidOpen) <= offset) {
+        if (CharArrayUtil.indexOf(docChars, DocumentationConstants.KDOC_CLOSE_TOKEN, lastKDOCValidOpen) <= caretLocation) {
             // verify if the kdoc has not been closed
             return false
         }

@@ -42,9 +42,10 @@ class EnterKDOCHandler : EnterHandlerDelegateAdapter() {
                 parseResult.getExceptions(),
                 parseResult.hasReturnValue())
         val newKDoc = KDocElementFactory(file.project).createKDocFromText(documentation)
-        val kelement = newKDoc as PsiElement
+        val psiElement = newKDoc as PsiElement
         ApplicationManager.getApplication().runWriteAction {
-            parseResult.getKDOCElement()!!.replace(kelement)
+            parseResult.getKDOCElement()!!.replace(psiElement)
+            editor.caretModel.moveToOffset(caretOffset - DocumentationConstants.GENERATED_KDOC_NEEDED_CARET_OFFSET)
         }
         return super.postProcessEnter(file, editor, dataContext)
     }

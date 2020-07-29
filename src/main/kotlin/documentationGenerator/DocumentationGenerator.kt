@@ -8,6 +8,7 @@ abstract class DocumentationGenerator {
 
         /**
          * generates the KDOC for a function
+         *
          * @param functionArguments a list of the arguments received by the function  to document
          * @param hasReturnValue true if the function has a return value, false otherwise
          * @param thrownExceptions a list of the exceptions thrown by the function to document

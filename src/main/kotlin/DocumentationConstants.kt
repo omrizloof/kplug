@@ -7,5 +7,6 @@ abstract class DocumentationConstants {
         const val LINE_PREFIX = "*"
         const val KDOC_OPEN_TOKEN = "/**"
         const val KDOC_CLOSE_TOKEN = "*/"
+        const val GENERATED_KDOC_NEEDED_CARET_OFFSET = 3
     }
 }
