@@ -14,20 +14,20 @@ abstract class DocumentationGenerator {
          *
          * @return a string holding the documentation
          */
-        fun generateDocumentation(functionArguments: List<String>, hasReturnValue: Boolean, thrownExceptions: List<String>): String {
+        fun generateDocumentation(functionArguments: List<String>, thrownExceptions: List<String>, hasReturnValue: Boolean): String {
             val stringBuilder = StringBuilder()
             stringBuilder.appendln(DocumentationConstants.KDOC_OPEN_TOKEN)
-                    .appendln(" ${DocumentationConstants.LINE_PREFIX} ")
+                    .appendln("\t ${DocumentationConstants.LINE_PREFIX} ")
             functionArguments.forEach {
-                stringBuilder.appendln(" ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_PARAM} $it ")
+                stringBuilder.appendln("\t ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_PARAM} $it ")
             }
             if (hasReturnValue) {
-                stringBuilder.appendln(" ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_RETURN} ")
+                stringBuilder.appendln("\t ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_RETURN} ")
             }
             thrownExceptions.forEach {
-                stringBuilder.appendln(" ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_THROWS} $it ")
+                stringBuilder.appendln("\t ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_THROWS} $it ")
             }
-            stringBuilder.appendln(" ${DocumentationConstants.KDOC_CLOSE_TOKEN}")
+            stringBuilder.appendln("\t ${DocumentationConstants.KDOC_CLOSE_TOKEN}")
 
             return stringBuilder.toString()
         }

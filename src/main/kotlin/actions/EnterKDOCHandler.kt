@@ -4,10 +4,15 @@ import com.intellij.codeInsight.CodeInsightSettings
 import com.intellij.codeInsight.editorActions.enter.EnterHandlerDelegate
 import com.intellij.codeInsight.editorActions.enter.EnterHandlerDelegateAdapter
 import com.intellij.openapi.actionSystem.DataContext
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.editor.Editor
+import com.intellij.openapi.vfs.ReadonlyStatusHandler
 import com.intellij.psi.PsiDocumentManager
+import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
+import documentationGenerator.DocumentationGenerator
 import kotlinParser.KDocPsiParser
+import org.jetbrains.kotlin.idea.kdoc.KDocElementFactory
 
 class EnterKDOCHandler : EnterHandlerDelegateAdapter() {
 
@@ -15,54 +20,32 @@ class EnterKDOCHandler : EnterHandlerDelegateAdapter() {
         if (!CodeInsightSettings.getInstance().SMART_INDENT_ON_ENTER) {
             return EnterHandlerDelegate.Result.Continue
         }
-        val currentKtFile = file as PsiFile
-        val documentManager = PsiDocumentManager.getInstance(currentKtFile.project)
+        val virtualFile = file.virtualFile
+        if (ReadonlyStatusHandler.getInstance(file.project).ensureFilesWritable(listOf(virtualFile)).readonlyFiles.contains(virtualFile)) {
+            return EnterHandlerDelegate.Result.Continue
+        }
+        val documentManager = PsiDocumentManager.getInstance(file.project)
         documentManager.commitAllDocuments()
         val document = editor.document
         val caretOffset = editor.caretModel.offset
         val psiParser = KDocPsiParser(file, document, caretOffset)
-        if (!psiParser.parse()) {
+        if (!psiParser.shouldGenerateKDOC()) {
             return EnterHandlerDelegate.Result.Continue
+        }
+        val parseResult = psiParser.parse()
+        if (parseResult.getKDOCElement() == null) {
+            // a valid KDOC element was not found
+            return EnterHandlerDelegate.Result.Continue
+        }
+        val documentation = DocumentationGenerator.generateDocumentation(
+                parseResult.getParameters(),
+                parseResult.getExceptions(),
+                parseResult.hasReturnValue())
+        val newKDoc = KDocElementFactory(file.project).createKDocFromText(documentation)
+        val kelement = newKDoc as PsiElement
+        ApplicationManager.getApplication().runWriteAction {
+            parseResult.getKDOCElement()!!.replace(kelement)
         }
         return super.postProcessEnter(file, editor, dataContext)
     }
-
-//    override fun preprocessEnter(
-//        file: PsiFile,
-//        editor: Editor,
-//        caretOffset: Ref<Int>,
-//        caretAdvance: Ref<Int>,
-//        dataContext: DataContext,
-//        originalHandler: EditorActionHandler?
-//    ): EnterHandlerDelegate.Result {
-//        if (!CodeInsightSettings.getInstance().SMART_INDENT_ON_ENTER) {
-//            return EnterHandlerDelegate.Result.Continue
-//        }
-//        if (file !is KtFile) {
-//            return EnterHandlerDelegate.Result.Continue
-//        }
-//        val document = editor.document
-//        val psiParser = PsiParser(file, document, caretOffset.get())
-//        if (!psiParser.shouldGenerateKDOC()) {
-//            return EnterHandlerDelegate.Result.Continue
-//        }
-//        val elementAtCaret = file.findElementAt(caretOffset.get())
-//        val p = elementAtCaret!!.parent
-//        val kdoc = PsiTreeUtil.getParentOfType(elementAtCaret, KDoc::class.java)
-//        if (kdoc == null) {
-////            mLog.debug("cannot find parent of type KDOC")
-//            return EnterHandlerDelegate.Result.Continue
-//        }
-//        val kdocSection = kdoc.getChildOfType<KDocSection>()
-//        if (kdocSection == null) {
-////            mLog.debug("cannot find kdoc")
-//            return EnterHandlerDelegate.Result.Continue
-//        }
-//        if (kdocSection.text.trim() != "*") {
-////            mLog.debug("cannot find kdoc")
-//            return EnterHandlerDelegate.Result.Continue
-//        }
-//        mLog.debug("GOT HERE")
-//        return super.preprocessEnter(file, editor, caretOffset, caretAdvance, dataContext, originalHandler)
-//    }
 }

@@ -5,6 +5,7 @@ import com.intellij.openapi.editor.Document
 import com.intellij.psi.PsiFile
 import com.intellij.util.text.CharArrayUtil
 import org.apache.commons.lang.StringUtils
+import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.KtNamedFunction
 
 
@@ -53,6 +54,9 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
     }
 
     override fun shouldGenerateKDOC(): Boolean {
+        if (mFile !is KtFile) {
+            return false
+        }
         val docChars = mDocument.charsSequence
         val offset = mCaretOffset
         val lastKDOCValidOpen = CharArrayUtil.lastIndexOf(docChars, DocumentationConstants.KDOC_OPEN_TOKEN, offset)
@@ -64,21 +68,18 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
             // verify if the kdoc has not been closed
             return false
         }
-        if (offset - lastKDOCValidOpen >= KDOC_OPEN_MAX_MARGIN) {
-            // caret is outside the kdoc. do not generate
-            return false
-        }
         return true
     }
 
     override fun parse(): ParseResult {
-        val emptyResult = ParseResult(emptyList(), emptyList(), false)
+        val emptyResult = ParseResult(null, emptyList(), emptyList(), false)
         // parent.parent will hold the function declaration or class declaration.
         val caretElement = mFile.findElementAt(mCaretOffset) ?: return emptyResult
         val firstParent = caretElement.parent ?: return emptyResult
         val secondParent = firstParent.parent ?: return emptyResult
         val functionDeclaration = secondParent as? KtNamedFunction ?: return emptyResult
         return ParseResult(
+                firstParent,
                 parseParameterList(functionDeclaration),
                 parseExceptionsList(functionDeclaration),
                 functionDeclaration.hasDeclaredReturnType())
