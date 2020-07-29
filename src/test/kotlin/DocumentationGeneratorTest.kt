@@ -24,193 +24,193 @@ class DocumentationGeneratorTest {
     @Test
     fun testGenerateNoArgumentsNoReturnValueNoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_NO_PARAMS_NO_RETURN_NO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(noArgumentsList, false, noExceptionsList))
+            DocumentationGenerator.generateDocumentation(noArgumentsList, noExceptionsList, false))
     }
 
     @Test
     fun testGenerateOneArgumentNoReturnValueNoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_ONE_PARAMS_NO_RETURN_NO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(oneArgumentList, false, noExceptionsList))
+            DocumentationGenerator.generateDocumentation(oneArgumentList, noExceptionsList, false))
     }
 
     @Test
     fun testGenerateTwoArgumentsNoReturnValueNoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_TWO_PARAMS_NO_RETURN_NO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(twoArgumentsList, false, noExceptionsList))
+            DocumentationGenerator.generateDocumentation(twoArgumentsList, noExceptionsList, false))
     }
 
     @Test
     fun testGenerateThreeArgumentsNoReturnValueNoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_THREE_PARAMS_NO_RETURN_NO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(threeArgumentList, false, noExceptionsList))
+            DocumentationGenerator.generateDocumentation(threeArgumentList, noExceptionsList, false))
     }
 
     @Test
     fun testGenerateNoArgumentsNoReturnValueOneException() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_NO_PARAMS_NO_RETURN_ONE_EXCEPTION,
-            DocumentationGenerator.generateDocumentation(noArgumentsList, false, oneExceptionList))
+            DocumentationGenerator.generateDocumentation(noArgumentsList, oneExceptionList, false))
     }
 
     @Test
     fun testGenerateOneArgumentNoReturnValueOneException() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_ONE_PARAMS_NO_RETURN_ONE_EXCEPTION,
-            DocumentationGenerator.generateDocumentation(oneArgumentList, false, oneExceptionList))
+            DocumentationGenerator.generateDocumentation(oneArgumentList, oneExceptionList, false))
     }
 
     @Test
     fun testGenerateTwoArgumentsNoReturnValueOneException() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_TWO_PARAMS_NO_RETURN_ONE_EXCEPTION,
-            DocumentationGenerator.generateDocumentation(twoArgumentsList, false, oneExceptionList))
+            DocumentationGenerator.generateDocumentation(twoArgumentsList, oneExceptionList, false))
     }
 
     @Test
     fun testGenerateThreeArgumentsNoReturnValueOneException() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_THREE_PARAMS_NO_RETURN_ONE_EXCEPTION,
-            DocumentationGenerator.generateDocumentation(threeArgumentList, false, oneExceptionList))
+            DocumentationGenerator.generateDocumentation(threeArgumentList, oneExceptionList, false))
     }
 
     @Test
     fun testGenerateNoArgumentsNoReturnValueTwoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_NO_PARAMS_NO_RETURN_TWO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(noArgumentsList, false, twoExceptionsList))
+            DocumentationGenerator.generateDocumentation(noArgumentsList, twoExceptionsList, false))
     }
 
     @Test
     fun testGenerateOneArgumentNoReturnValueTwoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_ONE_PARAMS_NO_RETURN_TWO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(oneArgumentList, false, twoExceptionsList))
+            DocumentationGenerator.generateDocumentation(oneArgumentList, twoExceptionsList, false))
     }
 
     @Test
     fun testGenerateTwoArgumentsNoReturnValueTwoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_TWO_PARAMS_NO_RETURN_TWO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(twoArgumentsList, false, twoExceptionsList))
+            DocumentationGenerator.generateDocumentation(twoArgumentsList, twoExceptionsList, false))
     }
 
     @Test
     fun testGenerateThreeArgumentsNoReturnValueTwoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_THREE_PARAMS_NO_RETURN_TWO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(threeArgumentList, false, twoExceptionsList))
+            DocumentationGenerator.generateDocumentation(threeArgumentList, twoExceptionsList, false))
     }
 
     @Test
     fun testGenerateNoArgumentsNoReturnValueThreeExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_NO_PARAMS_NO_RETURN_THREE_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(noArgumentsList, false, threeExceptionsList))
+            DocumentationGenerator.generateDocumentation(noArgumentsList, threeExceptionsList, false))
     }
 
     @Test
     fun testGenerateOneArgumentNoReturnValueThreeExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_ONE_PARAMS_NO_RETURN_THREE_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(oneArgumentList, false, threeExceptionsList))
+            DocumentationGenerator.generateDocumentation(oneArgumentList, threeExceptionsList, false))
     }
 
     @Test
     fun testGenerateTwoArgumentsNoReturnValueThreeExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_TWO_PARAMS_NO_RETURN_THREE_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(twoArgumentsList, false, threeExceptionsList))
+            DocumentationGenerator.generateDocumentation(twoArgumentsList, threeExceptionsList, false))
     }
 
     @Test
     fun testGenerateThreeArgumentsNoReturnValueThreeExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_THREE_PARAMS_NO_RETURN_THREE_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(threeArgumentList, false, threeExceptionsList))
+            DocumentationGenerator.generateDocumentation(threeArgumentList, threeExceptionsList, false))
     }
 
     @Test
     fun testGenerateNoArgumentsWithReturnValueNoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_NO_PARAMS_WITH_RETURN_NO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(noArgumentsList, true, noExceptionsList))
+            DocumentationGenerator.generateDocumentation(noArgumentsList, noExceptionsList, true))
     }
 
     @Test
     fun testGenerateOneArgumentWithReturnValueNoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_ONE_PARAMS_WITH_RETURN_NO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(oneArgumentList, true, noExceptionsList))
+            DocumentationGenerator.generateDocumentation(oneArgumentList, noExceptionsList, true))
     }
 
     @Test
     fun testGenerateTwoArgumentsWithReturnValueNoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_TWO_PARAMS_WITH_RETURN_NO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(twoArgumentsList, true, noExceptionsList))
+            DocumentationGenerator.generateDocumentation(twoArgumentsList, noExceptionsList, true))
     }
 
     @Test
     fun testGenerateThreeArgumentsWithReturnValueNoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_THREE_PARAMS_WITH_RETURN_NO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(threeArgumentList, true, noExceptionsList))
+            DocumentationGenerator.generateDocumentation(threeArgumentList, noExceptionsList, true))
     }
 
     @Test
     fun testGenerateNoArgumentsWithReturnValueOneException() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_NO_PARAMS_WITH_RETURN_ONE_EXCEPTION,
-            DocumentationGenerator.generateDocumentation(noArgumentsList, true, oneExceptionList))
+            DocumentationGenerator.generateDocumentation(noArgumentsList, oneExceptionList, true))
     }
 
     @Test
     fun testGenerateOneArgumentWithReturnValueOneException() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_ONE_PARAMS_WITH_RETURN_ONE_EXCEPTION,
-            DocumentationGenerator.generateDocumentation(oneArgumentList, true, oneExceptionList))
+            DocumentationGenerator.generateDocumentation(oneArgumentList, oneExceptionList, true))
     }
 
     @Test
     fun testGenerateTwoArgumentsWithReturnValueOneException() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_TWO_PARAMS_WITH_RETURN_ONE_EXCEPTION,
-            DocumentationGenerator.generateDocumentation(twoArgumentsList, true, oneExceptionList))
+            DocumentationGenerator.generateDocumentation(twoArgumentsList, oneExceptionList, true))
     }
 
     @Test
     fun testGenerateThreeArgumentsWithReturnValueOneException() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_THREE_PARAMS_WITH_RETURN_ONE_EXCEPTION,
-            DocumentationGenerator.generateDocumentation(threeArgumentList, true, oneExceptionList))
+            DocumentationGenerator.generateDocumentation(threeArgumentList, oneExceptionList, true))
     }
 
     @Test
     fun testGenerateNoArgumentsWithReturnValueTwoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_NO_PARAMS_WITH_RETURN_TWO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(noArgumentsList, true, twoExceptionsList))
+            DocumentationGenerator.generateDocumentation(noArgumentsList, twoExceptionsList, true))
     }
 
     @Test
     fun testGenerateOneArgumentWithReturnValueTwoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_ONE_PARAMS_WITH_RETURN_TWO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(oneArgumentList, true, twoExceptionsList))
+            DocumentationGenerator.generateDocumentation(oneArgumentList, twoExceptionsList, true))
     }
 
     @Test
     fun testGenerateTwoArgumentsWithReturnValueTwoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_TWO_PARAMS_WITH_RETURN_TWO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(twoArgumentsList, true, twoExceptionsList))
+            DocumentationGenerator.generateDocumentation(twoArgumentsList, twoExceptionsList, true))
     }
 
     @Test
     fun testGenerateThreeArgumentsWithReturnValueTwoExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_THREE_PARAMS_WITH_RETURN_TWO_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(threeArgumentList, true, twoExceptionsList))
+            DocumentationGenerator.generateDocumentation(threeArgumentList, twoExceptionsList, true))
     }
 
     @Test
     fun testGenerateNoArgumentsWithReturnValueThreeExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_NO_PARAMS_WITH_RETURN_THREE_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(noArgumentsList, true, threeExceptionsList))
+            DocumentationGenerator.generateDocumentation(noArgumentsList, threeExceptionsList, true))
     }
 
     @Test
     fun testGenerateOneArgumentWithReturnValueThreeExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_ONE_PARAMS_WITH_RETURN_THREE_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(oneArgumentList, true, threeExceptionsList))
+            DocumentationGenerator.generateDocumentation(oneArgumentList, threeExceptionsList, true))
     }
 
     @Test
     fun testGenerateTwoArgumentsWithReturnValueThreeExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_TWO_PARAMS_WITH_RETURN_THREE_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(twoArgumentsList, true, threeExceptionsList))
+            DocumentationGenerator.generateDocumentation(twoArgumentsList, threeExceptionsList, true))
     }
 
     @Test
     fun testGenerateThreeArgumentsWithReturnValueThreeExceptions() {
         assertEquals(DocumentationGeneratorTestConstants.EXPECTED_OUTPUT_THREE_PARAMS_WITH_RETURN_THREE_EXCEPTIONS,
-            DocumentationGenerator.generateDocumentation(threeArgumentList, true, threeExceptionsList))
+            DocumentationGenerator.generateDocumentation(threeArgumentList, threeExceptionsList, true))
     }
 
 }

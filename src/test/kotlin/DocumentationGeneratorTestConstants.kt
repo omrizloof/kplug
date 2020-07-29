@@ -12,274 +12,274 @@ object DocumentationGeneratorTestConstants {
 
     const val EXPECTED_OUTPUT_NO_PARAMS_NO_RETURN_NO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " */\n"
+                "\t * \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_NO_PARAMS_WITH_RETURN_NO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @return \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @return \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_ONE_PARAMS_NO_RETURN_NO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_ONE_PARAMS_WITH_RETURN_NO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_TWO_PARAMS_NO_RETURN_NO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_THREE_PARAMS_NO_RETURN_NO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @param $THIRD_ARGUMENT_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @param $THIRD_ARGUMENT_NAME \n" +
+                "\t */\n"
 
 
     const val EXPECTED_OUTPUT_NO_PARAMS_WITH_RETURN_ONE_EXCEPTION =
         "/**\n" +
-                " * \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_ONE_PARAMS_WITH_RETURN_ONE_EXCEPTION =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_TWO_PARAMS_WITH_RETURN_NO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_TWO_PARAMS_WITH_RETURN_ONE_EXCEPTION =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_THREE_PARAMS_WITH_RETURN_NO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @param $THIRD_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @param $THIRD_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_THREE_PARAMS_WITH_RETURN_ONE_EXCEPTION =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @param $THIRD_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @param $THIRD_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_NO_PARAMS_WITH_RETURN_TWO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_ONE_PARAMS_WITH_RETURN_TWO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_TWO_PARAMS_WITH_RETURN_TWO_EXCEPTIONS=
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_THREE_PARAMS_WITH_RETURN_TWO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @param $THIRD_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @param $THIRD_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_NO_PARAMS_WITH_RETURN_THREE_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " * @throws $THIRD_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t * @throws $THIRD_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_ONE_PARAMS_WITH_RETURN_THREE_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " * @throws $THIRD_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t * @throws $THIRD_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_TWO_PARAMS_WITH_RETURN_THREE_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " * @throws $THIRD_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t * @throws $THIRD_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_THREE_PARAMS_WITH_RETURN_THREE_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @param $THIRD_ARGUMENT_NAME \n" +
-                " * @return \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " * @throws $THIRD_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @param $THIRD_ARGUMENT_NAME \n" +
+                "\t * @return \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t * @throws $THIRD_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_NO_PARAMS_NO_RETURN_ONE_EXCEPTION =
         "/**\n" +
-                " * \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_ONE_PARAMS_NO_RETURN_ONE_EXCEPTION =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_TWO_PARAMS_NO_RETURN_ONE_EXCEPTION =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_THREE_PARAMS_NO_RETURN_ONE_EXCEPTION =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @param $THIRD_ARGUMENT_NAME \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @param $THIRD_ARGUMENT_NAME \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_NO_PARAMS_NO_RETURN_TWO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_ONE_PARAMS_NO_RETURN_TWO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_TWO_PARAMS_NO_RETURN_TWO_EXCEPTIONS=
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_THREE_PARAMS_NO_RETURN_TWO_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @param $THIRD_ARGUMENT_NAME \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @param $THIRD_ARGUMENT_NAME \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_NO_PARAMS_NO_RETURN_THREE_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " * @throws $THIRD_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t * @throws $THIRD_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_ONE_PARAMS_NO_RETURN_THREE_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " * @throws $THIRD_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t * @throws $THIRD_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_TWO_PARAMS_NO_RETURN_THREE_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " * @throws $THIRD_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t * @throws $THIRD_EXCEPTION_NAME \n" +
+                "\t */\n"
 
     const val EXPECTED_OUTPUT_THREE_PARAMS_NO_RETURN_THREE_EXCEPTIONS =
         "/**\n" +
-                " * \n" +
-                " * @param $FIRST_ARGUMENT_NAME \n" +
-                " * @param $SECOND_ARGUMENT_NAME \n" +
-                " * @param $THIRD_ARGUMENT_NAME \n" +
-                " * @throws $FIRST_EXCEPTION_NAME \n" +
-                " * @throws $SECOND_EXCEPTION_NAME \n" +
-                " * @throws $THIRD_EXCEPTION_NAME \n" +
-                " */\n"
+                "\t * \n" +
+                "\t * @param $FIRST_ARGUMENT_NAME \n" +
+                "\t * @param $SECOND_ARGUMENT_NAME \n" +
+                "\t * @param $THIRD_ARGUMENT_NAME \n" +
+                "\t * @throws $FIRST_EXCEPTION_NAME \n" +
+                "\t * @throws $SECOND_EXCEPTION_NAME \n" +
+                "\t * @throws $THIRD_EXCEPTION_NAME \n" +
+                "\t */\n"
 }

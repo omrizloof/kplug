@@ -22,7 +22,6 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
 
     /**
      * extracts the parameters from a kotlin named function
-     *
      * @param ktNamedFunction: the kotlin function whose parameters need to be parsed.
      * @return a list of the function parameters by name.
      */
@@ -37,7 +36,6 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
 
     /**
      * extracts the declared thrown exceptions from a kotlin named function
-     *
      * @param ktNamedFunction: the kotlin function whose exceptions need to be parsed.
      * @return a list of the function exceptions by type.
      */
