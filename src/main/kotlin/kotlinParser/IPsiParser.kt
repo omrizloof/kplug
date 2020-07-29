@@ -2,11 +2,7 @@ package kotlinParser
 
 interface IPsiParser {
 
-    fun parse(): Boolean
+    fun shouldGenerateKDOC(): Boolean
 
-    fun getArguments(): List<String>
-
-    fun getExceptions(): List<String>
-
-    fun hasReturnValue(): Boolean
+    fun parse(): ParseResult
 }

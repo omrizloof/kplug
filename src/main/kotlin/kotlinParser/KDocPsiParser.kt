@@ -1,16 +1,11 @@
 package kotlinParser
 
-import com.android.tools.idea.gradle.structure.model.meta.annotated
-import com.intellij.openapi.editor.*
-import com.intellij.psi.*
-import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.util.text.*
+import DocumentationConstants
+import com.intellij.openapi.editor.Document
+import com.intellij.psi.PsiFile
+import com.intellij.util.text.CharArrayUtil
 import org.apache.commons.lang.StringUtils
-import org.jetbrains.kotlin.idea.refactoring.changeSignature.getDeclarationBody
-import org.jetbrains.kotlin.kdoc.psi.api.KDoc
 import org.jetbrains.kotlin.psi.KtNamedFunction
-import org.jetbrains.kotlin.psi.KtTypeArgumentList
-import org.jetbrains.kotlin.util.isAnnotated
 
 
 class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document, private  val mCaretOffset: Int) : IPsiParser {
@@ -57,15 +52,7 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
         return exceptionsList
     }
 
-    override fun parse(): Boolean {
-        val project = mFile.project
-        // parent.parent will hold the function declaration or class declaration.
-        val caretElement = mFile.findElementAt(mCaretOffset) ?: return false
-        val firstParent = caretElement.parent ?: return false
-        val secondParent = firstParent.parent ?: return false
-        val functionDeclaration = secondParent as? KtNamedFunction ?: return false
-        val parameters = parseParameterList(functionDeclaration)
-        val exceptions = parseExceptionsList(functionDeclaration)
+    override fun shouldGenerateKDOC(): Boolean {
         val docChars = mDocument.charsSequence
         val offset = mCaretOffset
         val lastKDOCValidOpen = CharArrayUtil.lastIndexOf(docChars, DocumentationConstants.KDOC_OPEN_TOKEN, offset)
@@ -73,27 +60,28 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
             // could not find /** for a KDOC. should not generate.
             return false
         }
-        if (CharArrayUtil.indexOf(docChars, DocumentationConstants.KDOC_CLOSE_TOKEN, lastKDOCValidOpen) > offset) {
-            // verify if the kdoc has not been closed - if it has been closed, we should not generate.
+        if (CharArrayUtil.indexOf(docChars, DocumentationConstants.KDOC_CLOSE_TOKEN, lastKDOCValidOpen) <= offset) {
+            // verify if the kdoc has not been closed
             return false
         }
-//        if (offset - lastKDOCValidOpen < KDOC_OPEN_MAX_MARGIN) {
-//            // caret is inside the kdoc. do not generate again
-//            return false
-//        }
+        if (offset - lastKDOCValidOpen >= KDOC_OPEN_MAX_MARGIN) {
+            // caret is outside the kdoc. do not generate
+            return false
+        }
         return true
     }
 
-    override fun getArguments(): List<String> {
-        TODO("Not yet implemented")
-    }
-
-    override fun getExceptions(): List<String> {
-        TODO("Not yet implemented")
-    }
-
-    override fun hasReturnValue(): Boolean {
-        TODO("Not yet implemented")
+    override fun parse(): ParseResult {
+        val emptyResult = ParseResult(emptyList(), emptyList(), false)
+        // parent.parent will hold the function declaration or class declaration.
+        val caretElement = mFile.findElementAt(mCaretOffset) ?: return emptyResult
+        val firstParent = caretElement.parent ?: return emptyResult
+        val secondParent = firstParent.parent ?: return emptyResult
+        val functionDeclaration = secondParent as? KtNamedFunction ?: return emptyResult
+        return ParseResult(
+                parseParameterList(functionDeclaration),
+                parseExceptionsList(functionDeclaration),
+                functionDeclaration.hasDeclaredReturnType())
     }
 }
 
