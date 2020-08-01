@@ -20,6 +20,8 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
         private const val EXCEPTION_TYPE_POSTFIX_DELIMITER = ":"
     }
 
+    private val commentRegex = Regex("[^(*|\\/|\\s)]+")
+
     /**
      * extracts the parameters from a kotlin named function
      * @param ktNamedFunction: the kotlin function whose parameters need to be parsed.
@@ -64,12 +66,15 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
             // could not find /** for a KDOC. should not generate.
             return false
         }
-        if (CharArrayUtil.indexOf(docChars, DocumentationConstants.KDOC_CLOSE_TOKEN, lastKDOCValidOpen) <= caretLocation) {
+        val lastKDOCValidClose = CharArrayUtil.indexOf(docChars, DocumentationConstants.KDOC_CLOSE_TOKEN, lastKDOCValidOpen)
+        if (lastKDOCValidClose <= caretLocation) {
             // verify if the kdoc has not been closed
             return false
         }
-        // if we are already inside a kdoc, do not generate.
-
+        if (docChars.substring(lastKDOCValidOpen, lastKDOCValidClose).contains(commentRegex)) {
+            // something is already written in the comment, do not replace it with KDOC.
+            return false
+        }
         return true
     }
 
