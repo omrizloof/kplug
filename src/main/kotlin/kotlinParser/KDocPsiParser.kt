@@ -47,7 +47,7 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
                     StringUtils.substringBetween(it.text, PARENTHESIS_OPEN, PARENTHESIS_CLOSE)
                             .split(EXCEPTION_LIST_SEPARATOR)
                             .forEach { exception ->
-                        exceptionsList.add(exception.substringBefore(EXCEPTION_TYPE_POSTFIX_DELIMITER))
+                        exceptionsList.add(exception.substringBefore(EXCEPTION_TYPE_POSTFIX_DELIMITER).trim())
                     }
                 }
         return exceptionsList
@@ -68,6 +68,8 @@ class KDocPsiParser(private val mFile: PsiFile, private val mDocument: Document,
             // verify if the kdoc has not been closed
             return false
         }
+        // if we are already inside a kdoc, do not generate.
+
         return true
     }
 
