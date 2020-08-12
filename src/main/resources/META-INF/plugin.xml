@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>org.example.kplug</id>
     <name>KPlug</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="omrizphone@gmail.com" url="https://github.com/omrizloof">OZ</vendor>
 
     <description>generates kotlin documentation for functions</description>
 
