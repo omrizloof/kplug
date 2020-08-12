@@ -1,9 +1,9 @@
 <idea-plugin>
     <id>org.example.kplug</id>
-    <name>KPlug</name>
+    <name>KDOCer</name>
     <vendor email="omrizphone@gmail.com" url="https://github.com/omrizloof">OZ</vendor>
 
-    <description>generates kotlin documentation for functions</description>
+    <description>generates KDOC for methods in kotlin files.</description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
