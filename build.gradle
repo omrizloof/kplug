@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'org.example'
-version '1.0-SNAPSHOT'
+version '1.1'
 
 repositories {
     mavenCentral()
@@ -36,6 +36,6 @@ test {
 
 patchPluginXml {
     changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+      Added support for generating documentation of methods, including support for kotlin @throws annotation.<br>
+      """
 }
