@@ -3,7 +3,8 @@
     <name>KDOCer</name>
     <vendor email="omrizphone@gmail.com" url="https://github.com/omrizloof">OZ</vendor>
 
-    <description>generates KDOC for methods in kotlin files.</description>
+    <description>Automatically generates KDOC tags for functions when inserting the /** prefix and pressing enter.<![CDATA[ <br> ]]>
+        Makes writing kdoc similar to writing javadoc.</description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -14,16 +15,4 @@
     <extensions defaultExtensionNs="com.intellij">
         <enterHandlerDelegate implementation="actions.EnterKDOCHandler" order="first" />
     </extensions>
-
-    <actions>
-        <group id="MyPlugin.TopMenu"
-               text="CheckKPlugVersion"
-               description="KPlug plugin version check">
-            <add-to-group group-id="MainMenu" anchor="last"/>
-            <action id="KPlugVersion"
-                    class="actions.CheckVersionToolbarAction"
-                    text="_Check Version"
-                    description="KPlug"/>
-        </group>
-    </actions>
 </idea-plugin>
