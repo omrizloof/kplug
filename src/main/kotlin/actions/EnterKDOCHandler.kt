@@ -28,6 +28,7 @@ class EnterKDOCHandler : EnterHandlerDelegateAdapter() {
         documentManager.commitAllDocuments()
         val document = editor.document
         val caretOffset = editor.caretModel.offset
+        val indentationAmount = editor.caretModel.logicalPosition.column / 4
         val psiParser = KDocPsiParser(file, document, caretOffset)
         if (!psiParser.shouldGenerateKDOC()) {
             return EnterHandlerDelegate.Result.Continue
@@ -40,7 +41,8 @@ class EnterKDOCHandler : EnterHandlerDelegateAdapter() {
         val documentation = DocumentationGenerator.generateDocumentation(
                 parseResult.getParameters(),
                 parseResult.getExceptions(),
-                parseResult.hasReturnValue())
+                parseResult.hasReturnValue(),
+                indentationAmount)
         val newKDoc = KDocElementFactory(file.project).createKDocFromText(documentation)
         val psiElement = newKDoc as PsiElement
         ApplicationManager.getApplication().runWriteAction {

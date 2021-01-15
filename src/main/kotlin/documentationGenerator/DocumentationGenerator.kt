@@ -14,20 +14,25 @@ abstract class DocumentationGenerator {
          *
          * @return a string holding the documentation
          */
-        fun generateDocumentation(functionArguments: List<String>, thrownExceptions: List<String>, hasReturnValue: Boolean): String {
+        fun generateDocumentation(functionArguments: List<String>, thrownExceptions: List<String>, hasReturnValue: Boolean, indentationAmount: Int): String {
+            val indentationBuilder = StringBuilder()
+            for (i in 1..indentationAmount) {
+                indentationBuilder.append("\t")
+            }
+            val indentation = indentationBuilder.toString()
             val stringBuilder = StringBuilder()
             stringBuilder.appendln(DocumentationConstants.KDOC_OPEN_TOKEN)
-                    .appendln("\t ${DocumentationConstants.LINE_PREFIX} ")
+                    .appendln("$indentation ${DocumentationConstants.LINE_PREFIX} ")
             functionArguments.forEach {
-                stringBuilder.appendln("\t ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_PARAM} $it ")
+                stringBuilder.appendln("$indentation ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_PARAM} $it ")
             }
             if (hasReturnValue) {
-                stringBuilder.appendln("\t ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_RETURN} ")
+                stringBuilder.appendln("$indentation ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_RETURN} ")
             }
             thrownExceptions.forEach {
-                stringBuilder.appendln("\t ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_THROWS} $it ")
+                stringBuilder.appendln("$indentation ${DocumentationConstants.LINE_PREFIX} ${DocumentationConstants.KDOC_THROWS} $it ")
             }
-            stringBuilder.appendln("\t ${DocumentationConstants.KDOC_CLOSE_TOKEN}")
+            stringBuilder.appendln("$indentation ${DocumentationConstants.KDOC_CLOSE_TOKEN}")
 
             return stringBuilder.toString()
         }
