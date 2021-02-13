@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'org.example'
-version '1.2'
+version '1.3-201'
 
 repositories {
     mavenCentral()
@@ -18,7 +18,7 @@ dependencies {
 intellij {
     setPlugins('java', 'android', 'Kotlin')
     type = 'IC'
-    version = '2019.3.3'
+    version = '2020.1.4'
     alternativeIdePath = '/home/omri/android-studio'
 }
 
